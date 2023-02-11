@@ -1,5 +1,8 @@
+organization:
+  name: Bensing IO
+
 app:
-  title: Backstage Example App
+  title: Bensing IO
   baseUrl: http://localhost:3000
   #datadogRum:
   #  clientToken: '123456789'
@@ -31,8 +34,19 @@ backend:
   listen:
     port: 7007
   database:
-    client: better-sqlite3
-    connection: ':memory:'
+    # client: better-sqlite3
+    # connection: ':memory:'
+    # config options: https://node-postgres.com/apis/client
+    client: pg
+    connection:
+      host: localhost
+      port: 5432
+      user: backstage
+      password: backstage
+      # https://node-postgres.com/features/ssl
+      #ssl: require # see https://www.postgresql.org/docs/current/libpq-ssl.html Table 33.1. SSL Mode Descriptions (e.g. require)
+        #ca: # if you have a CA file and want to verify it you can uncomment this section
+        #$file: <file-path>/ca/server.crt
   cache:
     store: memory
   cors:
@@ -118,8 +132,6 @@ proxy:
     headers:
       Authorization: 'Api-Token ${DYNATRACE_ACCESS_TOKEN}'
 
-organization:
-  name: My Company
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
