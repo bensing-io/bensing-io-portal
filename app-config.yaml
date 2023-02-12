@@ -4,38 +4,12 @@ organization:
 app:
   title: Bensing IO
   baseUrl: http://localhost:3000
-  #datadogRum:
-  #  clientToken: '123456789'
-  #  applicationId: qwerty
-  #   site: # datadoghq.eu default = datadoghq.com
-  #   env: # optional
-  support:
-    url: https://github.com/backstage/backstage/issues # Used by common ErrorPage
-    items: # Used by common SupportButton component
-      - title: Issues
-        icon: github
-        links:
-          - url: https://github.com/backstage/backstage/issues
-            title: GitHub Issues
-      - title: Discord Chatroom
-        icon: chat
-        links:
-          - url: https://discord.gg/MUpMjP2
-            title: '#backstage'
 
 backend:
-  # Used for enabling authentication, secret is shared by all backend plugins
-  # See https://backstage.io/docs/tutorials/backend-to-backend-auth for
-  # information on the format
-  # auth:
-  #   keys:
-  #     - secret: ${BACKEND_SECRET}
   baseUrl: http://localhost:7007
   listen:
     port: 7007
   database:
-    # client: better-sqlite3
-    # connection: ':memory:'
     # config options: https://node-postgres.com/apis/client
     client: pg
     connection:
@@ -132,7 +106,6 @@ proxy:
     headers:
       Authorization: 'Api-Token ${DYNATRACE_ACCESS_TOKEN}'
 
-
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
 # and an external cloud storage when deploying TechDocs for production use-case.
@@ -146,42 +119,10 @@ techdocs:
   publisher:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3' or 'azureBlobStorage' or 'openStackSwift'. Read documentation for using alternatives.
 
-dynatrace:
-  baseUrl: https://your.dynatrace.instance.com
-
 # Score-cards sample configuration.
 scorecards:
   jsonDataUrl: https://raw.githubusercontent.com/Oriflame/backstage-plugins/main/plugins/score-card/sample-data/
   wikiLinkTemplate: https://link-to-wiki/{id}
-
-sentry:
-  organization: my-company
-
-rollbar:
-  organization: my-company
-  # NOTE: The rollbar-backend & accountToken key may be deprecated in the future (replaced by a proxy config)
-  accountToken: my-rollbar-account-token
-
-lighthouse:
-  baseUrl: http://localhost:3003
-
-kubernetes:
-  serviceLocatorMethod:
-    type: 'multiTenant'
-  clusterLocatorMethods:
-    - type: 'config'
-      clusters: []
-
-kafka:
-  clientId: backstage
-  clusters:
-    - name: cluster
-      dashboardUrl: https://akhq.io/
-      brokers:
-        - localhost:9092
-
-allure:
-  baseUrl: http://localhost:5050/allure-docker-service
 
 integrations:
   github:
@@ -286,6 +227,7 @@ catalog:
     # Backstage end-to-end tests of TechDocs
     - type: file
       target: ../../cypress/e2e-fixture.catalog.info.yaml
+
 scaffolder:
   # Use to customize default commit author info used when new components are created
   # defaultAuthor:
@@ -383,6 +325,7 @@ auth:
         scopes: ${AUTH_ATLASSIAN_SCOPES}
     myproxy:
       development: {}
+
 costInsights:
   engineerCost: 200000
   engineerThreshold: 0.5
@@ -433,25 +376,6 @@ costInsights:
       kind: 'PINTS_OF_ICE_CREAM'
       unit: 'ice cream pint'
       rate: 5.5
-pagerduty:
-  eventsBaseUrl: 'https://events.pagerduty.com/v2'
-jenkins:
-  instances:
-    - name: default
-      baseUrl: https://jenkins.example.com
-      username: backstage-bot
-      apiKey: 123456789abcdef0123456789abcedf012
-
-azureDevOps:
-  host: dev.azure.com
-  token: my-token
-  organization: my-company
-
-apacheAirflow:
-  baseUrl: https://your.airflow.instance.com
-
-gocd:
-  baseUrl: https://your.gocd.instance.com
 
 permission:
   enabled: true
