@@ -1,5 +1,5 @@
 {
-  "name": "example-backend",
+  "name": "bensing-io-portal-backend",
   "version": "0.2.80-next.2",
   "main": "dist/index.cjs.js",
   "types": "src/index.ts",
