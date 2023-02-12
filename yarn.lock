@@ -17581,9 +17581,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"bensing-io-portal@workspace:packages/app":
+"bensing-io-portal-frontend@workspace:packages/app":
   version: 0.0.0-use.local
-  resolution: "bensing-io-portal@workspace:packages/app"
+  resolution: "bensing-io-portal-frontend@workspace:packages/app"
   dependencies:
     "@backstage/app-defaults": "workspace:^"
     "@backstage/catalog-model": "workspace:^"

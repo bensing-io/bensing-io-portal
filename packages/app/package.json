@@ -1,5 +1,5 @@
 {
-  "name": "bensing-io-portal",
+  "name": "bensing-io-portal-frontend",
   "version": "0.2.80-next.2",
   "private": true,
   "backstage": {
